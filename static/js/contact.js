@@ -1,4 +1,5 @@
 // Contact form functionality
+// Contact form functionality
 // contact.js - Contact page terminal animation and email form
 document.addEventListener("DOMContentLoaded", function() {
     const animationContainer = document.getElementById('terminal-animation');
