@@ -209,3 +209,4 @@ Created as a personal portfolio project to showcase development skills in a uniq
 - Built with Flask web framework
 - Icons provided by Font Awesome
 - Fonts from Google Fonts (Fira Mono)
+
