@@ -1,0 +1,6 @@
+## lets ignore vent 
+
+venv/
+__pycache__/
+.DS_Store
+.git
