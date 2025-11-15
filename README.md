@@ -1,5 +1,7 @@
 # Terminal CV
 
+[![Deploy Flask CV to AWS](https://github.com/Xurxxo/Flask-website-cv/actions/workflows/deploy.yml/badge.svg)](https://github.com/Xurxxo/Flask-website-cv/actions/workflows/deploy.yml)
+
 A terminal-style portfolio website built with Flask. This project showcases professional experience, projects, and skills in a unique command-line interface theme.
 
 ## About
@@ -209,4 +211,28 @@ Created as a personal portfolio project to showcase development skills in a uniq
 - Built with Flask web framework
 - Icons provided by Font Awesome
 - Fonts from Google Fonts (Fira Mono)
+
+## 🚀 Continuous Integration / Continuous Deployment
+
+This project uses **GitHub Actions** for automated deployment to AWS.
+
+### Deployment Workflow
+
+Every `git push` to the `main` branch automatically:
+
+1. ✅ Builds Docker image for `linux/amd64`
+2. ✅ Pushes image to Amazon ECR
+3. ✅ Deploys to EC2 via SSH
+4. ✅ Zero-downtime container replacement
+
+**Deployment time:** ~30-60 seconds
+
+### Architecture
+
+- **Application:** Flask (Python)
+- **Containerization:** Docker
+- **Registry:** Amazon ECR
+- **Hosting:** AWS EC2 (Amazon Linux 2023)
+- **Infrastructure:** Terraform
+- **CI/CD:** GitHub Actions
 
