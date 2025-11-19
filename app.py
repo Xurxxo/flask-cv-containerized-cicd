@@ -50,4 +50,4 @@ def send_email():
 if __name__ == "__main__":
     # Production ready configuration
     # Production ready configuration
-    app.run(debug=True, port=5051)
+    app.run(debug=True, port=5052)

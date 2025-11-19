@@ -63,29 +63,6 @@ The application will be available at: http://localhost:5051
 
 To stop the server, press `Ctrl+C` in the terminal.
 
-## Project Structure
-
-```
-terminal-cv/
-├── app.py                      # Main Flask application
-├── requirements.txt            # Python dependencies
-├── static/
-│   ├── css/
-│   │   └── style.css          # All CSS styles
-│   ├── js/
-│   │   ├── contact.js         # Contact form logic
-│   │   └── unzip.js           # Animation utilities
-│   └── profile.jpg            # Profile photo
-└── templates/
-    ├── base.html              # Base template with navigation
-    ├── index.html             # Home page
-    ├── whoami.html            # About page
-    ├── ls.html                # Projects page
-    ├── work.html              # Work experience
-    ├── studies.html           # Education
-    └── man.html               # Contact page
-```
-
 ## Customization
 
 ### Update Personal Information
@@ -121,27 +98,6 @@ Example with environment variables:
 import os
 email_api_key = os.getenv('EMAIL_API_KEY')
 ```
-
-## Deployment
-
-This application can be deployed to various platforms:
-
-### Heroku
-1. Create a `Procfile` with: `web: python app.py`
-2. Update `app.py` to use `PORT` environment variable
-3. Deploy using Heroku CLI or GitHub integration
-
-### Railway
-1. Connect your GitHub repository
-2. Railway will auto-detect Flask and deploy
-3. Set environment variables in the dashboard
-
-### PythonAnywhere
-1. Upload your code
-2. Configure a web app with Flask
-3. Set the working directory and virtualenv path
-
-Remember to set `debug=False` in production.
 
 ## Development
 
@@ -188,31 +144,12 @@ pip install -r requirements.txt
 ### Template Not Found
 Ensure all HTML files are in the `templates/` directory and Flask is looking in the correct location.
 
-## Contributing
-
-This is a personal portfolio project, but suggestions and improvements are welcome:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
 ## License
 
 This project is open source and available under the MIT License.
 
-## Author
 
-Created as a personal portfolio project to showcase development skills in a unique terminal-style interface.
-
-## Acknowledgments
-
-- Design inspired by Linux terminal and AWS console
-- Built with Flask web framework
-- Icons provided by Font Awesome
-- Fonts from Google Fonts (Fira Mono)
-
-## 🚀 Continuous Integration / Continuous Deployment
+## Continuous Integration / Continuous Deployment
 
 This project uses **GitHub Actions** for automated deployment to AWS.
 
@@ -220,10 +157,10 @@ This project uses **GitHub Actions** for automated deployment to AWS.
 
 Every `git push` to the `main` branch automatically:
 
-1. ✅ Builds Docker image for `linux/amd64`
-2. ✅ Pushes image to Amazon ECR
-3. ✅ Deploys to EC2 via SSH
-4. ✅ Zero-downtime container replacement
+1. Builds Docker image for `linux/amd64`
+2. Pushes image to Amazon ECR
+3. Deploys to EC2 via SSH
+4. Zero-downtime container replacement
 
 **Deployment time:** ~30-60 seconds
 

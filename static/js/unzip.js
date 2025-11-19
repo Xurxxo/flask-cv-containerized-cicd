@@ -33,14 +33,14 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Animation sequence
     const animationSteps = [
-        { delay: 300, text: '$ ls -la', className: 'command-line' },
-        { delay: 200, text: `total 8`, className: 'output-line' },
-        { delay: 100, text: `drwxr-xr-x 2 user user 4096 Nov  6 10:30 .`, className: 'output-line' },
-        { delay: 100, text: `drwxr-xr-x 8 user user 4096 Nov  6 10:30 ..`, className: 'output-line' },
-        { delay: 100, text: `-rw-r--r-- 1 user user 2048 Nov  6 10:30 ${filename}`, className: 'output-line' },
-        { delay: 400, text: '', className: 'blank-line' },
-        { delay: 300, text: `$ tar -xzf ${filename}`, className: 'command-line' },
-        { delay: 200, text: `Extracting archive...`, className: 'output-line' },
+        { delay: 150, text: '$ ls -la', className: 'command-line' },
+        { delay: 100, text: `total 8`, className: 'output-line' },
+        { delay: 50, text: `drwxr-xr-x 2 user user 4096 Nov  6 10:30 .`, className: 'output-line' },
+        { delay: 50, text: `drwxr-xr-x 8 user user 4096 Nov  6 10:30 ..`, className: 'output-line' },
+        { delay: 50, text: `-rw-r--r-- 1 user user 2048 Nov  6 10:30 ${filename}`, className: 'output-line' },
+        { delay: 200, text: '', className: 'blank-line' },
+        { delay: 50, text: `$ tar -xzf ${filename}`, className: 'command-line' },
+        { delay: 50, text: `Extracting archive...`, className: 'output-line' },
     ];
     
     let currentStep = 0;
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         const loadingInterval = setInterval(() => {
             // Update progress (faster increments for smoother animation)
-            progress += Math.random() * 8 + 4; // Random between 4-12% per tick
+            progress += Math.random() * 19 + 18; // Random between 4-12% per tick
             if (progress > maxProgress) progress = maxProgress;
             
             // Create progress bar with # symbols

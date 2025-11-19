@@ -1,62 +1,46 @@
-name: Deploy Flask CV to AWS
+name: Deploy to AWS S3
 
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
+  pull_request:
+    branches: [ main ]
 
-env:
-  AWS_REGION: eu-central-1
-  ECR_REPOSITORY: flask-terminal-cv
-  ECR_REGISTRY: 503561417727.dkr.ecr.eu-central-1.amazonaws.com
-  
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION }}
-      
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-      
-      - name: Build Docker image
-        env:
-          IMAGE_TAG: ${{ github.sha }}
-        run: |
-          docker build --platform linux/amd64 -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
-      
-      - name: Push image to ECR
-        env:
-          IMAGE_TAG: ${{ github.sha }}
-        run: |
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
-      
-      - name: Deploy to EC2
-        env:
-          EC2_HOST: ${{ secrets.EC2_HOST }}
-        run: |
-          echo "${{ secrets.EC2_SSH_KEY }}" > private_key.pem
-          chmod 600 private_key.pem
-          
-          ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@$EC2_HOST << 'ENDSSH'
-            aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 503561417727.dkr.ecr.eu-central-1.amazonaws.com
-            docker stop flask-cv-app || true
-            docker rm flask-cv-app || true
-            docker pull 503561417727.dkr.ecr.eu-central-1.amazonaws.com/flask-terminal-cv:latest
-            docker run -d --name flask-cv-app --restart unless-stopped -p 80:8000 503561417727.dkr.ecr.eu-central-1.amazonaws.com/flask-terminal-cv:latest
-            echo "Deployment completed"
-          ENDSSH
-          
-          rm private_key.pem
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Generate static site
+      run: |
+        python generate_static.py
+    
+    - name: Configure AWS credentials
+      if: github.ref == 'refs/heads/main'
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-central-1
+    
+    - name: Deploy to S3
+      if: github.ref == 'refs/heads/main'
+      run: |
+        aws s3 sync dist/ s3://flask-cv-static-site --delete
+    
+    - name: Invalidate CloudFront cache
+      if: github.ref == 'refs/heads/main'
+      run: |
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
