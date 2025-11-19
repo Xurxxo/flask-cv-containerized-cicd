@@ -1,81 +1,80 @@
-<!-- Real projects showcase -->
-<!-- Real projects showcase -->
-{% extends "base.html" %}
-{% block title %}ls ~/projects{% endblock %}
-{% block content %}
-<div class="terminal page-terminal">
-    <div class="terminal-header">
-        <div class="button red"></div>
-        <div class="button yellow"></div>
-        <div class="button green"></div>
-    </div>
-    <div class="terminal-body">
-        <div id="terminal-animation">
-            <!-- Terminal animation will be inserted here by JavaScript -->
+     {% extends "base.html" %}
+    {% block title %}ls ~/projects{% endblock %}
+    {% block content %}
+    <div class="terminal page-terminal">
+        <div class="terminal-header">
+            <div class="button red"></div>
+            <div class="button yellow"></div>
+            <div class="button green"></div>
         </div>
-        
-        <!-- Content appears after animation -->
-        <div id="content-container" style="display: none;">
-            <pre class="projects-content">
-╔════════════════════════════════════════════════════════════╗
-║                    📂 PROJECTS DIRECTORY                   ║
-╚════════════════════════════════════════════════════════════╝
+        <div class="terminal-body">
+            <div id="terminal-animation">
+                <!-- Terminal animation will be inserted here by JavaScript -->
+            </div>
+            
+            <!-- Content appears after animation -->
+            <div id="content-container" style="display: none;">
+                <pre class="projects-content">
+   <span class="term-tech">╔════════════════════════════════════════════════════════════╗</span>
+<span class="term-tech">   ║                    📂 PROJECTS DIRECTORY                   ║</span>
+<span class="term-tech">   ╚════════════════════════════════════════════════════════════╝</span>
 
 
-GitHub Project List
-[PROJECT 1]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
-Name: aws-terraform-flask-infrastructure 
-Description: Infrastructure as Code (IaC) in AWS using Terraform to deploy a Flask application along with necessary cloud services. 
-Tech Stack: AWS (S3, CloudFront), Terraform, Python, Flask, CI/CD 
-Repository: https://github.com/Xurxxo/aws-terraform-flask-infrastructure 
+<span class="term-prompt">GitHub Project List</span>
+
+[<span class="term-cmd">PROJECT 1</span>]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
+<span class="term-label">Name:</span> <span class="term-tech">aws-terraform-flask-infrastructure</span>
+<span class="term-label">Description:</span> Infrastructure as Code (IaC) in AWS using Terraform to deploy a Flask application along with necessary cloud services.
+<span class="term-label">Tech Stack:</span> <span class="term-tech">AWS</span> (S3, CloudFront), <span class="term-tech">Terraform</span>, <span class="term-tech">Python</span>, <span class="term-tech">Flask</span>, CI/CD
+<span class="term-label">Repository:</span> <a href="https://github.com/Xurxxo/aws-terraform-flask-infrastructure" target="_blank">github.com/Xurxxo/aws-terraform-flask-infrastructure</a>
 
 
-[PROJECT 2]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
-Name: flask_terminal_cv 
-Description: A dynamic terminal/CLI-style web application developed with Flask to present a digital CV. 
-Tech Stack: Python, Flask, JavaScript, HTML/CSS (CLI-style) 
-Repository: https://github.com/Xurxxo/flask_terminal_cv 
+[<span class="term-cmd">PROJECT 2</span>]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
+<span class="term-label">Name:</span> <span class="term-tech">flask_terminal_cv</span>
+<span class="term-label">Description:</span> A dynamic terminal/CLI-style web application developed with Flask to present a digital CV.
+<span class="term-label">Tech Stack:</span> <span class="term-tech">Python</span>, <span class="term-tech">Flask</span>, <span class="term-tech">JavaScript</span>, HTML/CSS (CLI-style)
+<span class="term-label">Repository:</span> <a href="https://github.com/Xurxxo/flask_terminal_cv" target="_blank">github.com/Xurxxo/flask_terminal_cv</a>
 
 
-[PROJECT 3]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
-Name: python_kafka_producer_consumer 
-Description: Implementation of Python producer and consumer services for handling asynchronous data streams using Apache Kafka. 
-Tech Stack: Python, Apache Kafka, Docker 
-Repository: https://github.com/Xurxxo/python_kafka_producer_consumer 
+[<span class="term-cmd">PROJECT 3</span>]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
+<span class="term-label">Name:</span> <span class="term-tech">python_kafka_producer_consumer</span>
+<span class="term-label">Description:</span> Implementation of Python producer and consumer services for handling asynchronous data streams using Apache Kafka.
+<span class="term-label">Tech Stack:</span> <span class="term-tech">Python</span>, <span class="term-tech">Apache Kafka</span>, <span class="term-tech">Docker</span>
+<span class="term-label">Repository:</span> <a href="https://github.com/Xurxxo/python_kafka_producer_consumer" target="_blank">github.com/Xurxxo/python_kafka_producer_consumer</a>
 
 
-[PROJECT 4]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
-Name: terraform-aws-project 
-Description: A collection of Terraform modules and configurations to provision and manage essential and advanced resources on AWS. 
-Tech Stack: Terraform, AWS, IaC (Infrastructure as Code) 
-Repository: https://github.com/Xurxxo/terraform-aws-project 
+[<span class="term-cmd">PROJECT 4</span>]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
+<span class="term-label">Name:</span> <span class="term-tech">terraform-aws-project</span>
+<span class="term-label">Description:</span> A collection of Terraform modules and configurations to provision and manage essential and advanced resources on AWS.
+<span class="term-label">Tech Stack:</span> <span class="term-tech">Terraform</span>, <span class="term-tech">AWS</span>, IaC
+<span class="term-label">Repository:</span> <a href="https://github.com/Xurxxo/terraform-aws-project" target="_blank">github.com/Xurxxo/terraform-aws-project</a>
 
 
-[PROJECT 5]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
-Name: terraform-docker-jenkins-aws 
-Description: IaC configuration to automate the deployment of Docker, Jenkins, or related services onto AWS infrastructure. 
-Tech Stack: Terraform, AWS, Docker, Jenkins, CI/CD 
-Repository: https://github.com/Xurxxo/terraform-docker-jenkins-aws 
+[<span class="term-cmd">PROJECT 5</span>]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
+<span class="term-label">Name:</span> <span class="term-tech">terraform-docker-jenkins-aws</span>
+<span class="term-label">Description:</span> IaC configuration to automate the deployment of Docker, Jenkins, or related services onto AWS infrastructure.
+<span class="term-label">Tech Stack:</span> <span class="term-tech">Terraform</span>, <span class="term-tech">AWS</span>, <span class="term-tech">Docker</span>, Jenkins, CI/CD
+<span class="term-label">Repository:</span> <a href="https://github.com/Xurxxo/terraform-docker-jenkins-aws" target="_blank">github.com/Xurxxo/terraform-docker-jenkins-aws</a>
 
 
-[PROJECT 6]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
-Name: Xurxxo 
-Description: Special repository for configuring and visually enhancing the main GitHub profile page (Readme). 
-Tech Stack: Markdown, GitHub Actions (Optional) 
-Repository: https://github.com/Xurxxo/Xurxxo 
+[<span class="term-cmd">PROJECT 6</span>]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
+<span class="term-label">Name:</span> <span class="term-tech">Xurxxo</span>
+<span class="term-label">Description:</span> Special repository for configuring and visually enhancing the main GitHub profile page.
+<span class="term-label">Tech Stack:</span> Markdown, GitHub Actions (Optional)
+<span class="term-label">Repository:</span> <a href="https://github.com/Xurxxo/Xurxxo" target="_blank">github.com/Xurxxo/Xurxxo</a>
 
-            </pre>
+                </pre>
+            </div>
         </div>
     </div>
-</div>
-{% endblock %}
+    {% endblock %}
 
-{% block scripts %}
-<script src="{{ url_for('static', filename='js/unzip.js') }}"></script>
-{% endblock %}
+    {% block scripts %}
+    <script src="{{ url_for('static', filename='js/unzip.js') }}"></script>
+    {% endblock %}
