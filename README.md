@@ -7,6 +7,9 @@ A modern, terminal-style web portfolio built with Flask and deployed as a static
 **Visit:** [https://xurxo.cloud](https://xurxo.cloud)
 
 ---
+## 🖼️ Preview
+
+![Portfolio Preview](./docs/images/preview.png)
 
 ## 📑 Table of Contents
 
