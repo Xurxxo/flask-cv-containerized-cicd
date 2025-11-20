@@ -21,9 +21,9 @@ document.addEventListener("DOMContentLoaded", function() {
         { delay: 300, text: '╔════════════════════════════════════════════════╗', className: 'info-box' },
         { delay: 50, text: '║             CONTACT INFORMATION                ║', className: 'info-box' },
         { delay: 50, text: '╠════════════════════════════════════════════════╣', className: 'info-box' },
-        { delay: 50, text: '║  Email:     xurxo@mail.com                     ║', className: 'info-box' },
+        { delay: 50, text: '║  Email:     xurxo.astorgano@gmail.com          ║', className: 'info-box' },
         { delay: 50, text: '║  GitHub:    github.com/Xurxxo                  ║', className: 'info-box' },
-        { delay: 50, text: '║  LinkedIn:  linkedin.com/in/xurxo.astorgano    ║', className: 'info-box' },
+        { delay: 50, text: '║  LinkedIn:  linkedin.com/in/xurxoastorgano     ║', className: 'info-box' },
         { delay: 50, text: '╚════════════════════════════════════════════════╝', className: 'info-box' },
         { delay: 500, text: '$ cd mail/', className: 'command-line' },
         { delay: 300, text: '$ ./mail-client', className: 'command-line' },
@@ -67,23 +67,20 @@ document.addEventListener("DOMContentLoaded", function() {
         const emailInput = document.getElementById('email');
         const messageInput = document.getElementById('message');
         
-        const data = {
-            email: emailInput.value,
-            message: messageInput.value
-        };
+        const formData = new FormData();
+        formData.append('email', emailInput.value);
+        formData.append('message', messageInput.value);
         
         try {
-            const response = await fetch('/send-email', {
+            const response = await fetch('https://formspree.io/f/mgvdylbk', {
                 method: 'POST',
+                body: formData,
                 headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
+                    'Accept': 'application/json'
+                }
             });
             
-            const result = await response.json();
-            
-            if (result.success) {
+            if (response.ok) {
                 // Hide form
                 form.style.display = 'none';
                 
@@ -97,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 responseMessage.style.display = 'block';
             } else {
                 responseMessage.className = 'error-message';
-                responseMessage.textContent = '✗ Error: ' + result.message;
+                responseMessage.textContent = '✗ Error sending message. Please try again.';
                 responseMessage.style.display = 'block';
             }
         } catch (error) {

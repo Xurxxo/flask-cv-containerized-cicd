@@ -724,4 +724,34 @@ h1 {
     .page {
         padding-top: 90px;
     }
+}       
+/* Green marker for whoami sections */
+.green-marker {
+    color: #00FF00;
+    margin-right: 0.5rem;
+}
+/* Vim-style colors - para ambas páginas */
+.project-num {
+    color: #FFD700; /* Amarillo */
+}
+
+.project-name {
+    color: #00CED1; /* Cyan */
+}
+
+.field-label {
+    color: #808080; /* Gris */
+}
+
+.tech-keyword {
+    color: #4169E1; /* Azul */
+}
+
+.repo-link {
+    color: #00FF00; /* Verde */
+    text-decoration: none;
+}
+
+.repo-link:hover {
+    text-decoration: underline;
 }
